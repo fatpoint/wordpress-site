@@ -1,0 +1,85 @@
+<?php
+/**
+ * The Header for our theme
+ *
+ * Displays all of the <head> section and everything up till <div id="main">
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fourteen
+ * @since Twenty Fourteen 1.0
+ */
+?><!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html <?php language_attributes(); ?>>
+<!--<![endif]-->
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width">
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<!--[if lt IE 9]>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/font.css">
+	<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+<div>
+<div id="page" class="site">
+
+	<?php if ( get_header_image() ) : ?>
+	<div id="site-header">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
+		</a>
+	</div>
+	<?php endif; ?>
+
+	<header class="site-header center" >
+		<div class="lang-bar">
+				
+						<form method="get" action="<?php echo get_site_url(); ?>" class="language-select">
+							<div class="select" style="overflow: hidden; display: inline-block; position: relative;">
+								<select id="header-languages" name="languages" onchange="window.location='http://' + this.value;" style="-moz-box-sizing: border-box; cursor: pointer; display: block; left: 0px; opacity: 0; position: absolute; top: 0px; z-index: 1;">
+									<option value="<?php echo get_site_url(); ?>" class="lang_en" selected="selected">English</option>
+									<option value="<?php echo get_site_url(); ?>" class="lang_da-ge">Germany</option>						<option value="<?php echo get_site_url(); ?>" class="lang_de-fr">France</option>					
+								</select>
+								<span class="text" style="background:url(<?php echo get_template_directory_uri(); ?>/images/us.png) no-repeat;"></span>
+								<span class="arrow"></span>
+							</div>
+						</form>
+				
+		
+		</div>
+
+		<div class="nav-menu">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary',
+                                                    'depth' => 3,
+			'menu_class' => 'sf-menu',
+			'echo'  => true,
+			'items_wrap' => '<ul id="%1$s" class="%2$s ">%3$s</ul>',
+			'depth' => 10, 
+			'container_class' => 'menu primary-menu',
+                                                    ) ); ?>
+		</div>
+		<div class="clear">
+			
+		</div>
+
+	</header><!-- .site-header -->
+
+	<div id="main" class="site-main">
+		<div id="banner-slide">
+			<?php /*echo do_shortcode('[wonderplugin_slider id="1"]'); */
+			//if ( function_exists( 'soliloquy' ) ) { soliloquy( '63' ); }
+			echo do_shortcode('[wonderplugin_slider id="1"]
+			?>
+		</div> <!-- banner slide-->
